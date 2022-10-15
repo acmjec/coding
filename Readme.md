@@ -12,3 +12,5 @@
 👉 Fork this repository.<br>
 👉 Select any language and submit the solution of questions available in the repository.<br>
 👉 Create pull-request.<br>
+👉 Uploaded Solution should be correct, Only then it will be merged in the repository.<br>
+
