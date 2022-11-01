@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define fastio()                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+typedef long long ll;
+
+
+/*
+   C++ : 
+   check if there is two cells in the same column are blocked 
+
+   then Monocarp is in a trap 
+
+   the answer will be "NO"
+
+   otherwise
+
+   "YES"
+*/
+
+void code()
+{
+    int n;
+    cin>>n;
+
+    string arr[2];
+
+    for(int i=0;i<2;i++)
+    {
+        string s;
+        cin>>s;
+
+        arr[i]=s;
+    }
+
+    bool x=0;
+
+    for(int i=0;i<n;i++)
+    {
+        if(arr[0][i]=='1' && arr[1][i]=='1')
+        {
+            x=1;
+        }
+    }
+
+    if(x)
+    {
+        cout<<"NO";
+    }
+    else
+    {
+        cout<<"YES";
+    }
+}
+
+int main()
+{
+    fastio();
+
+    int t=1;
+    cin>>t;
+
+    for(int i=1;i<=t;i++)
+    {
+        code();
+        cout<<"\n";
+    }
+    return 0;
+}
