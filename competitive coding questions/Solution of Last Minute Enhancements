@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define fastio()                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+typedef long long ll;
+
+void code()
+{
+    int n;
+    cin>>n;
+
+    int arr[n];
+
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+
+    if( n==1 )
+    {
+        cout << 1;
+        return;
+    }
+
+    /*
+        We will create a SET and insert the notes in it
+        and at every step check if the note is present in the SET or not
+
+        if it is present then we increase the note by one and then insert it
+        and if not simply insert it in the SET
+        and the the number of the elements in the SET is the number of distinct notes
+    */
+
+    set<int> notes;
+
+    for(int i=0;i<n;i++)
+    {
+        if( notes.find( arr[i] ) != notes.end() )
+        {
+            notes.insert( arr[i] +1 );    
+        }
+        else
+        {
+            notes.insert( arr[i] );
+        }
+    }
+
+    cout<< notes.size();
+}
+
+int main()
+{
+    fastio();
+
+    int t=1; // number of testcases
+    cin>>t;
+
+    for(int i=1;i<=t;i++)
+    {
+        code();
+        cout<<"\n";
+    }
+    return 0;
+}
