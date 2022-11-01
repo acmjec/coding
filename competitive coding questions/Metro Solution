@@ -1,0 +1,99 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define fastio()                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+typedef long long ll;
+
+void code()
+{
+    int n;
+    cin>>n;
+
+    int s;
+    cin>>s;
+
+    int first_train[n];  // moving from 1 to Nth station
+    int second_train[n]; // moving from Nth to 1 station
+
+    for(int i=0;i<n;i++)
+    {
+        cin>>first_train[i];
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        cin>>second_train[i];
+    }
+
+// if Train 1st did ont stop at Bob's station he can't go through Train
+    if(first_train[0]==0) 
+    {
+        cout << "NO";
+        return;
+    }
+
+
+// if 1st Train and 2nd Train did not stop at Alice's station then the answer is NO
+    if(first_train[s-1]==0 && second_train[s-1]==0)
+    {
+        cout << "NO";
+        return;
+    }
+
+// if 1st train did not stop at Alice's station then Bob can travel to the next Stations 
+// ans then change to 2nd Train (that is moving backward toward station 1) 
+// and if 2nd Train stops at Alice's station the answer is YES
+// Otherwise No
+
+    if(first_train[s-1]==0 && second_train[s-1]!=0)
+    {
+        bool x=0;
+        for(int i=s;i<n;i++)
+        {
+            if(first_train[i]==1)
+            {
+                if(second_train[i]==1)
+                {
+                    x=1;
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        if(x)
+        {
+            cout<<"YES";
+            return;
+        }
+        else
+        {
+            cout<<"NO";
+            return;
+        }
+    }
+
+// if on of the above conditions occur then Bob can go through Train to Alice's house
+
+    cout<<"YES";
+}
+
+int main()
+{
+    fastio();
+
+    int t=1; // number of testcases
+
+    for(int i=1;i<=t;i++)
+    {
+        code();
+        cout<<"\n";
+    }
+    return 0;
+}
